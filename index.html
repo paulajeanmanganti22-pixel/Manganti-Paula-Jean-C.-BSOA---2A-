@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>PANDOŘA</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+        <style>
+            body {
+                margin: 0;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+
+            header {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                position: relative;
+                padding: 45px 0;
+                border-bottom: 1px solid rgba(56, 56, 56, 0.405);
+            }
+
+            .logo {
+                width: 15%;
+            }
+
+            .slideshow-container {
+                position: relative;
+                width: 90%;
+                margin: 40px auto;
+                overflow: hidden;
+            }
+
+            .slides-wrapper {
+                display: flex;
+                transition: transform 0.6s ease-in-out;
+            }
+
+            .slide {
+                min-width: 100%;
+                box-sizing: border-box;
+                position: relative;
+            }
+
+            .slide img {
+                width: 100%;
+                height: 400px;
+                object-fit: cover;
+                display: block;
+            }
+
+            .slide-text {
+                position: absolute;
+                top: 50%;
+                left: 45%;
+                transform: translate(-140%, -50%);
+                color: white;
+                font-size: 50px;
+                font-weight: bold;
+                text-align: left;
+                text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            }
+
+            .prev,
+            .next {
+                cursor: pointer;
+                position: absolute;
+                top: 30%;
+                padding: 16px;
+                color: white;
+                font-size: 24px;
+                font-weight: bold;
+                transform: translateY(-50%);
+                user-select: none;
+            }
+
+            .prev {
+                left: 10px;
+            }
+
+            .next {
+                right: 10px;
+            }
+
+            .category-navigation {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 60px;
+                margin-top: 50px;
+            }
+
+            .category-item {
+                text-align: center;
+                cursor: pointer;
+            }
+
+            .category-item img {
+                width: 180px;
+                height: 180px;
+                object-fit: cover;
+                border-radius: 10px;
+                transition: transform 0.3s ease;
+            }
+
+            .category-item img:hover {
+                transform: scale(1.05);
+            }
+
+            .category-item p {
+                margin-top: 15px;
+                font-weight: bold;
+                letter-spacing: 2px;
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <img src="/img/index/Pandora_Logo_2025_Black_RGB_trns_bg_360x.avif" alt="pandora-logo" class="logo">
+        </header>
+        <div class="slideshow-container">
+            <div class="slides-wrapper" id="slides">
+                <div class="slide">
+                    <img src="/img/index/3_6f62b8c7-3bf5-4c7b-9216-1fdcba33f378.webp">
+                    <div class="slide-text">
+                        WRITE YOUR<br>HEART OUT
+                    </div>
+                </div>
+                <div class="slide">
+                    <img src="/img/index/Philippine_Charm_-_Country_Exclusive_Shopify_Feature_Landing_Page_Banner.webp">
+                </div>
+                <div class="slide">
+                    <img src="/img/index/Pandora_jewellery_box_banner_f3f310c9-ca88-4f79-bceb-af01c5c3e1d0.webp">
+                    <div class="slide-text" style="transform: translate(-115%, -50%);">
+                        PANDORA<br>JEWELLERY BOX
+                    </div>
+                </div>
+            </div>
+            <a class="prev" onclick="moveSlide(-1)">❮</a>
+            <a class="next" onclick="moveSlide(1)">❯</a>
+            <div class="category-navigation">
+                <div class="category-item">
+                    <a href="rings.html">
+                        <img src="/img/rings/1.jpg" alt="Rings">
+                    </a>
+                    <p>RINGS</p>
+                </div>
+                <div class="category-item">
+                    <a href="necklaces.html">
+                        <img src="/img/necklaces/1.jpg" alt="Necklaces">
+                    </a>
+                    <p>NECKLACES</p>
+                </div>
+                <div class="category-item">
+                    <a href="bracelets.html">
+                        <img src="/img/bracelets/1.jpg" alt="Bracelets">
+                    </a>
+                    <p>BRACELETS</p>
+                </div>
+            </div>
+        </div>
+        <script>
+            let index = 0;
+            const slides = document.getElementById("slides");
+            const totalSlides = slides.children.length;
+            function showSlide() {
+                slides.style.transform = `translateX(-${index * 100}%)`;
+            }
+            function moveSlide(step) {
+                index += step;
+                if (index >= totalSlides) index = 0;
+                if (index < 0) index = totalSlides - 1;
+                showSlide();
+            }
+            setInterval(() => {
+                index++;
+                if (index >= totalSlides) index = 0;
+                showSlide();
+            }, 3000);
+        </script>
+    </body>
+</html>
